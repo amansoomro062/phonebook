@@ -7,17 +7,26 @@ import { Subject } from 'rxjs';
 export class AuthService {
 
     loginStatus = new Subject<boolean>();
+    
+    // 
+    
     username = "aman"
     password = "aman"
 
     constructor() {}
+    
     login(username: string, password: string) {
 
         if(this.username == username && this.password == password) {
+            
             this.loginStatus.next(true)
+            
             return true
         } else {
+            // 
             this.loginStatus.next(false)
+            // 
+
             return false
         }
     }
