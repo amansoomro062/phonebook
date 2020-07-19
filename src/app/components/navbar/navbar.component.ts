@@ -10,17 +10,20 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit ,OnDestroy {
 
+  //Subscription
   private userSub : Subscription;
+  
   constructor(private authService : AuthService, private router: Router) { }
 
   isLoggedIn: boolean = false
   ngOnInit(): void {
+
     this.userSub = this.authService.loginStatus.subscribe(
       (isAuthenticated) => {
         this.isLoggedIn = isAuthenticated;
-        console.log(this.isLoggedIn);
       }
     );
+    
   }
 
   ngOnDestroy() {

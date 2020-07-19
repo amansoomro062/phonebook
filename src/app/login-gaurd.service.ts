@@ -22,8 +22,10 @@ export class LoginGaurd implements CanActivate, OnDestroy{
     private userSub : Subscription;
 
 
-    canActivate(route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot) : Observable<boolean> | Promise<boolean> | boolean | Subject<boolean> {
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+        ) : Observable<boolean> | Promise<boolean> | boolean | Subject<boolean> {
         // status : boolean = this.authService.loginStatus;
         
         // this.isLoggedIn = this.authService.loginStatus.pipe(map(isLoggedIn => {
@@ -34,7 +36,6 @@ export class LoginGaurd implements CanActivate, OnDestroy{
         this.userSub = this.authService.loginStatus.subscribe(
             (isAuthenticated) => {
               this.isLoggedIn = isAuthenticated;
-              console.log(this.isLoggedIn);
             }
           );
 
@@ -42,13 +43,9 @@ export class LoginGaurd implements CanActivate, OnDestroy{
         
         if(this.isLoggedIn) {
             this.router.navigate(['/phone'])
-            console.log("Okay boss!");
-            
             return false
         } else {
-            console.log("Sorry boss");
             return true;
-            
         }
     }
 }

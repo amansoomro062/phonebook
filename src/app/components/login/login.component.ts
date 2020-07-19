@@ -14,11 +14,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   username : string
   password : string
+  
   isAuthenticated: boolean = false;
   
   onSubmit(form : NgForm) {
+    console.log(form);
+    
     this.username = form.value['username'];   
     this.password = form.value['password'];
     this.isAuthenticated = this.loginService.login(this.username, this.password);
