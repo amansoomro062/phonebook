@@ -1,1 +1,29 @@
 <p>phonebook works!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form (ngSubmit)="onSubmit()" #form="ngForm">
+                <input type="text" name="name" placeholder="name" ngModel id="name">
+                <input type="number" name="phone" placeholder="phone number" ngModel id="phone">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top: 10px;background-color: wheat;width: 50%;" *ngFor="let c of contacts; let i = index">
+        <div class="col-9" >
+            <div class="pull-left" >
+                <h3 class="list-group-item-heading">{{c.name}}</h3>
+                <h5 class="list-group-item-text">{{c.phone}}</h5>        
+            </div>
+        </div>
+        <div class="col-1" >
+            <button style="height: 100%;" class="btn btn-warning" (click)="onEdit(c)"> Edit </button>
+        </div>
+        <div class="col-2" >
+            <button style="height: 100%;" class="btn btn-danger" (click)="onDelete(c)"> Delete </button>
+        </div>
+    </div>
+</div>

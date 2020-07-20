@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core'
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -13,14 +14,13 @@ export class AuthService {
     username = "aman"
     password = "aman"
 
-    constructor() {}
+    constructor(private router: Router) {}
     
     login(username: string, password: string) {
 
         if(this.username == username && this.password == password) {
             
             this.loginStatus.next(true)
-            
             return true
         } else {
             // 
